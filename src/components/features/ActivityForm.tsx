@@ -128,7 +128,13 @@ export const ActivityForm: React.FC<ActivityFormProps> = ({
     }
     
     // Prepare submission data based on time mode
-    let submissionData: any = {
+    const submissionData: {
+      title: string;
+      category: string;
+      startTime?: Date;
+      endTime?: Date;
+      duration?: number;
+    } = {
       title: title.trim(),
       category
     };

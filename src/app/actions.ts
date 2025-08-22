@@ -21,7 +21,13 @@ export async function createActivity(data: {
   startTime?: Date;
   endTime?: Date;
 }) {
-    const activityData: any = {
+    const activityData: {
+        title: string;
+        category: string;
+        userId: string;
+        startTime?: Date;
+        endTime?: Date;
+    } = {
         title: data.title,
         category: data.category,
         userId: data.userId
@@ -49,7 +55,7 @@ export async function updateActivity(id: string, data: {
 }) {
     // Filter out null values from the update data
     const updateData = Object.fromEntries(
-        Object.entries(data).filter(([_, value]) => value !== null)
+        Object.entries(data).filter(([, value]) => value !== null)
     );
     
     // If endTime is explicitly set to null, we need to handle it specially

@@ -32,7 +32,15 @@ export default function Home() {
   }, []);
 
   // Convert database dates to strings for consistency
-  const convertActivityDates = (activities: any[]): Activity[] => {
+  const convertActivityDates = (activities: Array<{
+    id: string;
+    title: string;
+    category: string | null;
+    startTime: Date | string;
+    endTime: Date | string | null;
+    createdAt: Date | string;
+    userId: string;
+  }>): Activity[] => {
     return activities.map(activity => ({
       ...activity,
       startTime: activity.startTime instanceof Date ? activity.startTime.toISOString() : activity.startTime,
@@ -100,7 +108,7 @@ export default function Home() {
       try {
         if (activity.endTime) {
           // Resume activity by removing end time (set to undefined to remove the field)
-          await updateActivity(activity.id, { endTime: null as any });
+          await updateActivity(activity.id, { endTime: null as Date | null });
         } else {
           // Stop activity by setting end time
           await updateActivity(activity.id, { endTime: new Date() });
@@ -194,7 +202,7 @@ export default function Home() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                     </svg>
                     <h3 className="text-xl font-semibold text-white mb-2">No activities match your search</h3>
-                    <p className="text-gray-400 mb-6">Try adjusting your search terms or filters to find what you're looking for.</p>
+                    <p className="text-gray-400 mb-6">Try adjusting your search terms or filters to find what you&rsquo;re looking for.</p>
                     <button
                       onClick={() => window.location.reload()}
                       className={`

@@ -246,7 +246,7 @@ export default function Home() {
                       className={animationClasses.slideIn}
                       style={{ animationDelay: `${index * 0.1}s` }}
                     >
-                      <ActivityCard 
+                     <ActivityCard 
                         activity={activity} 
                         onDelete={handleDelete} 
                         onEdit={setActivityToEdit}
@@ -262,7 +262,7 @@ export default function Home() {
           {/* Footer */}
           <footer className="text-center py-8 border-t border-gray-700">
             <p className="text-gray-400">
-              Semangat beraktivitas nya ya!
+              Semangat Scroll Fesnuknya!
             </p>
           </footer>
         </div>
